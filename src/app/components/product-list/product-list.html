@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>Products</h2>
+
+  <div class="mb-3 w-25">
+    <label for="category">Filter by category:</label>
+    <select id="category" class="form-select" [(ngModel)]="selectedCategory" (change)="filter()">
+      <option *ngFor="let c of categories">{{ c }}</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of filtered">
+      <div class="card mb-3 h-100">
+        <img [src]="product.imageUrl" [alt]="product.name" class="card-img-top" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5>{{ product.name }}</h5>
+          <p>{{ product.description }}</p>
+          <strong>${{ product.price }}</strong>
+          <br>
+          <a class="btn btn-primary btn-sm mt-2" [routerLink]="['/product', product.id]">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
