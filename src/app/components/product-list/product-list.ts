@@ -13,7 +13,6 @@ import { ProductService } from '../../services/product';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  filtered: Product[] = [];
   categories: string[] = [];
   selectedCategory: string = 'All';
 
@@ -22,7 +21,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
       this.products = data;
-      this.filter();
     });
 
     this.productService.getCategories().subscribe(cats => {
@@ -30,9 +28,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  filter(): void {
-    this.filtered = this.selectedCategory === 'All'
+  get filtered(): Product[] {
+    return this.selectedCategory == 'All'
       ? this.products
-      : this.products.filter(p => p.category === this.selectedCategory);
+      : this.products.filter(p => p.category == this.selectedCategory);
   }
 }

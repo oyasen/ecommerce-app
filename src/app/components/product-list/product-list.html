@@ -3,7 +3,7 @@
 
   <div class="mb-3 w-25">
     <label for="category">Filter by category:</label>
-    <select id="category" class="form-select" [(ngModel)]="selectedCategory" (change)="filter()">
+    <select id="category" class="form-select" [(ngModel)]="selectedCategory">
       <option *ngFor="let c of categories">{{ c }}</option>
     </select>
   </div>
