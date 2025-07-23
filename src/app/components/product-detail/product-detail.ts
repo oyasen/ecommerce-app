@@ -9,11 +9,11 @@ import { ProductService } from '../../services/product';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './product-detail.html'
 })
 export class ProductDetailComponent implements OnInit {
-  
+
   product?: Product;
 
   constructor(private route: ActivatedRoute, private productService: ProductService,private location:Location) {}
